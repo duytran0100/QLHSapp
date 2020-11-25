@@ -1,4 +1,4 @@
-from sqlalchemy import Integer, Float, String, Column, ForeignKey, Boolean,Enum,Date
+from sqlalchemy import Integer, Float, String, Column, ForeignKey, Boolean,Date,Enum
 from sqlalchemy.orm import relationship
 from QLHS import db,admin
 from flask_admin import BaseView, expose
