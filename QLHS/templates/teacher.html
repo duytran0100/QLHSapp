@@ -1,0 +1,49 @@
+{% extends 'index.html' %}
+
+{% block title %}
+<title>Giáo Viên</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fuild">
+        {% if current_user.user_role != user_role.USER %}
+        <a class="btn btn-danger m-3" href="{{ url_for('teach') }}">
+            <i class="fas fa-plus"></i>
+            Phân Công
+        </a>
+        {% endif %}
+        <!--Teacher list Card-->
+        <div class="card">
+            <div class="card-header text-center text-danger">
+                Danh Sách Giáo Viên
+            </div>
+
+            <!-- Card Body -->
+            <div class="card-body">
+                <table class="table table-bordered text-center">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Họ Tên</th>
+                            <th>Địa chỉ</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for teacher in teacher_list %}
+                            <tr>
+                                <td>{{ teacher.id }}</td>
+                                <td>{{ teacher.name }}</td>
+                                <td>{{ teacher.address }}</td>
+                                <td>{{ teacher.email }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- End Card Body -->
+        </div>
+        <!--End Card -->
+
+    </div>
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends 'index.html' %}
+
+{% block title %}
+<title>Báo Cáo Môn Học</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fuild">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Báo cáo môn học</h1>
+        </div>
+
+        <!-- Form Start -->
+        <form method="get" action="">
+
+            <div class="row ml-3 mr-3">
+
+                <div class="form-group col">
+                    <label for="subject-id">Môn học: </label>
+                    <select name="subject-id" class="form-control" id="subject-id" required>
+                            <option disabled="true" selected></option>
+                            {% for subject in subjects %}
+                            <option value="{{ subject.id }}">{{ subject.name }}</option>
+                            {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group col">
+                    <label for="semester-id">Học kỳ: </label>
+                    <select name="semester-id" class="form-control" id="semester-id" required>
+                            <option disabled="true" selected></option>
+                            {% for semester in semesters %}
+                            <option value="{{ semester.id }}">{{ semester.name }} ({{semester.school_year}})</option>
+                            {% endfor %}
+                    </select>
+                </div>
+
+            </div>
+            <div class="form-group ml-5">
+                <input type="submit"  value="Tìm" class="btn btn-danger">
+            </div>
+        </form>
+        <!-- End Form -->
+
+        <!-- Start Card -->
+        <div class="card">
+            <div class="card-header text-center text-danger">
+                Báo Cáo Tổng Kết Môn
+            </div>
+            <div class="card-header text-success text-center border">
+                <div class="row">
+                    <div class="col-md-6">Môn: {{ report_info["subject"] }} </div>
+                    <div class="col-md-6 ">Học kỳ: {{ report_info["semester"] }} </div>
+                </div>
+            </div>
+
+            <!-- Card Body -->
+            <div class="card-body">
+                <table class="table table-bordered text-center">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Lớp</th>
+                            <th>Sĩ số</th>
+                            <th>Số lượng đạt</th>
+                            <th>Tỷ lệ</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for result in report.values() %}
+                        <tr>
+                            <td>{{ result["class_id"]}}</td>
+                            <td>{{ result["class_name"]}}</td>
+                            <td>{{ result["num_of_student"]}}</td>
+                            <td>{{ result["num_of_pass_student"]}}</td>
+                            <td>
+                                {% if result["num_of_student"] != 0 %}
+                                    {{ "{:,.1f}".format(result["num_of_pass_student"]/result["num_of_student"] * 100) }} %
+                                {% else %}
+                                    0.0 %
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- End Card Body -->
+
+        </div>
+        <!-- End Card -->
+
+    </div>
+{% endblock %}

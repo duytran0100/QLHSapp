@@ -1,0 +1,61 @@
+{% extends 'index.html' %}
+
+{% block title %}
+<title>Học Sinh</title>
+{% endblock %}
+
+
+{% block content %}
+    <div class="container-fuild">
+
+        {% if current_user.user_role != user_role.USER %}
+        <a class="btn btn-danger m-2" href="{{ url_for('add_student') }}">
+            <i class="fas fa-plus"></i>
+            Thêm học sinh
+        </a>
+        {% endif %}
+        <!--Student list Card-->
+        <div class="card">
+            <div class="card-header text-center text-danger">
+                Danh Sách Học Sinh
+            </div>
+
+            <!-- Card Body -->
+            <div class="card-body">
+                <table class="table table-bordered text-center">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Họ Tên</th>
+                            <th>Giới tính</th>
+                            <th>Ngày Sinh</th>
+                            <th>Địa chỉ</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for student in student_list%}
+                            <tr>
+                                <td>{{ student.id }}</td>
+                                <td>{{ student.name }}</td>
+                                <td>
+                                    {% if student.gender == 0 %}
+                                        Nam
+                                    {% else %}
+                                        Nữ
+                                    {% endif %}
+                                </td>
+                                <td>{{ student.day_of_birth }}</td>
+                                <td>{{ student.address }}</td>
+                                <td>{{ student.email }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- End Card Body -->
+        </div>
+        <!--End Card -->
+
+    </div>
+{% endblock %}

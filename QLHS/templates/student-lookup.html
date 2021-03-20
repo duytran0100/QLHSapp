@@ -1,0 +1,105 @@
+{% extends 'index.html' %}
+
+{% block title %}
+<title>Tra Cứu Học Sinh</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fuild">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Tra cứu học sinh</h1>
+        </div>
+
+        <!-- Form Start -->
+        <div class="container">
+            <form method="get" >
+                <div class="row">
+                <div class="form-group col">
+                    <label for="student-name" class="text-danger">Họ Tên</label>
+                    <input class="form-control" type="text" placeholder="Họ tên học sinh" name="student-name" id="student-name"/>
+                </div>
+                <div class="form-group col">
+                    <label for="class" class="text-danger">Lớp</label>
+                    <select id="class" name="class-id" class="form-control">
+                        <option disabled="true" selected>Chọn lớp</option>
+                        {% for class in classes %}
+                        <option value="{{class.id}}">{{ class.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group col">
+                    <label for="school-year">Năm học</label>
+                    <select id="school-year" name="school-year" class="form-control">
+                        <option disabled="true" selected>Chọn năm học</option>
+                        {% for year in school_years %}
+                        <option value="{{year.school_year}}">{{ year.school_year}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-danger" value="Tìm kiếm">
+                </div>
+            </form>
+        </div>
+
+
+        <!--Student list Card-->
+        <div class="card">
+            <div class="card-header text-center text-danger">
+                Danh Sách Học Sinh
+            </div>
+
+            <!-- Card Body -->
+            <div class="card-body">
+                <table class="table table-bordered text-center">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Họ Tên</th>
+                            <th>Lớp</th>
+                            <th>TB Học kỳ 1</th>
+                            <th>TB Học kỳ 2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% if students %}
+
+                        {% for student in students %}
+                            <tr>
+                                <td>{{ student.id }}</td>
+                                <td>{{ student.name }}</td>
+                                <td>
+                                    {% if student.class_id %}
+                                        {{ classes[student.class_id-1] }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if avg_score %}
+                                        {{ avg_score[student.id]['hk1'][0][0] }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if avg_score %}
+                                        {{ avg_score[student.id]['hk2'][0][0] }}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                    {% else %}
+                        <tr>
+                            <td colspan="5">
+                                <div class="alert-danger alert-center">Không có dữ liệu</div>
+                            </td>
+                        </tr>
+                    {% endif %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- End Card Body -->
+        </div>
+        <!--End Card -->
+
+    </div>
+{% endblock %}

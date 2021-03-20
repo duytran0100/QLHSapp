@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+
+{% block title %}
+<title>Môn Học</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fuild">
+    <div class="card">
+         <div class="card-header text-center text-danger">
+             Danh Sách Môn Học
+         </div>
+
+        <!-- Card Body -->
+        <div class="card-body">
+            <table class="table table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên Môn Học</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for subject in subjects %}
+                    <tr>
+                        <td>{{ subject.id }}</td>
+                        <td>{{ subject.name }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <!-- End Card Body -->
+
+    </div>
+    <!--End Card -->
+</div>
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+
+{% block title %}
+<title>Thêm Điểm</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fuild">
+        <div class="d-sm-flex align-items-center justify-content-between ml-4">
+            <h1 class="h3 mb-0 text-gray-800">Nhập điểm</h1>
+        </div>
+
+        <!-- Form Start -->
+        <form action="" method="post" class="m-5">
+            {% if errmsg %}
+            <div class="alert alert-danger">
+                {{ errmsg }}
+            </div>
+            {% endif %}
+
+            <div class="form-group">
+                <label class="text-success">Tên học sinh:</label>
+                <input class="form-control text-danger" disabled value="{{student_name}}">
+            </div>
+            <div class="form-group">
+                <label class="text-success">Lớp:</label>
+                <input class="form-control text-danger" disabled value="{{class_name}}">
+            </div>
+            <div class="form-group">
+                <label class="text-success">Môn học:</label>
+                <input class="form-control text-danger" disabled value="{{subject_name}}">
+            </div>
+            <div class="form-group">
+                <label class="text-success">Học kỳ:</label>
+                <input class="form-control text-danger" disabled value="{{semester.name}} ({{semester.school_year}})">
+            </div>
+            <div class="form-group">
+                <label class="text-success">Điểm:</label>
+                <input class="form-control" name="score" type="number">
+            </div>
+            <div class="form-group">
+                <label class="text-success">Loại Điểm:</label>
+                <select class="form-control" name="score-type" >
+                    <option value="15 phút">15 phút</option>
+                    <option value="1 tiết">1 tiết</option>
+                    <option value="Học kỳ">Học kỳ</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <input class="btn btn-danger" type="submit" value="Nhập điểm">
+            </div>
+
+        </form>
+        <!-- End Form -->
+
+    </div>
+{% endblock %}

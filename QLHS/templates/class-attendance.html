@@ -1,0 +1,85 @@
+{% extends 'index.html' %}
+
+{% block title %}
+<title>Lập Danh Sách Lớp</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fuild">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Lập danh sách lớp</h1>
+        </div>
+        {% if errmsg %}
+        <div class="alert alert-danger">
+            {{ errmsg }}
+        </div>
+        {% endif %}
+        <form method="get" action="" class="d-flex" >
+                <div class="form-group">
+                    <select name="class-id" class="form-control">
+                        <option disabled="true" selected>Chọn lớp</option>
+                        {% for class in classes %}
+                        <option value="{{class.id}}">{{ class.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-danger" value="Tham gia">
+                </div>
+        </form>
+        {% if class_id %}
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center text-info">Chi tiết lớp học</div>
+                    <div class="text-left text-info">Tên lớp học: {{ class_name }}</div>
+                    <div class="text-left text-info">Sĩ số: {{ num_of_pupils }}</div>
+                </div>
+                <div class="card-body">
+                    <form action="" method="post">
+                        <table class="table table-bordered text-center">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Họ Tên</th>
+                                    <th>Giới tính</th>
+                                    <th>Ngày Sinh</th>
+                                    <th>Lớp hiện tại</th>
+                                    <th>Tham gia</th>
+                                </tr>
+                            </thead>
+                            <!-- Table Body -->
+                            <tbody>
+                            {% for student in students %}
+                                    <tr>
+                                    <td>{{ student.id }}</td>
+                                    <td>{{ student.name }}</td>
+                                    <td>
+                                        {% if student.gender == 0 %}
+                                            Nam
+                                        {% else %}
+                                            Nữ
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ student.day_of_birth }}</td>
+                                    <td>
+                                        {% if student.class_id %}
+                                            {{ classes[student.class_id-1] }}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <input class="form-check-input" type="checkbox" name="student-id" value="{{ student.id }}">
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                            <!-- End Table Body -->
+                        </table>
+                        <input type="submit" class="btn btn-danger float-right">
+                    </form>
+                </div>
+
+            </div>
+        {% endif %}
+
+    </div>
+{% endblock %}

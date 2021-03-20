@@ -1,0 +1,77 @@
+{% extends 'index.html' %}
+{% block title %}
+<title>Lớp</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fuild">
+        <div>
+
+            {% if current_user.user_role != user_role.USER %}
+            <a class="btn btn-danger m-3" href="{{ url_for('class_attendance') }}">
+                <i class="fas fa-plus"></i>
+                Lập danh sách lớp
+            </a>
+            {% endif %}
+
+            <form class="m-2" method="get" action="" >
+                <div class="form-group">
+                    <select name="class-id" class="form-control" onchange="form.submit()">
+                        <option disabled="true" selected>Chọn lớp</option>
+                        {% for class in classes %}
+                        <option value="{{class.id}}">{{ class.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </form>
+        </div>
+
+        <!-- Class list Card-->
+        <div class="card">
+            <div class="card-header text-center text-danger">
+                Danh sách lớp
+            </div>
+            <div class="card-header text-success text-center d-flex">
+                <div class="col-md-6 ">Lớp: {{class_name}}</div>
+                <div class="col-md-6 ">Sĩ số: {{num_of_pupils}}</div>
+            </div>
+
+            <!-- Card Body -->
+            <div class="card-body">
+
+                    <table class="table table-bordered text-center">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Họ Tên</th>
+                                <th>Giới tính</th>
+                                <th>Ngày Sinh</th>
+                                <th>Địa chỉ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for student in students%}
+                                <tr>
+                                    <td>{{ student.id }}</td>
+                                    <td>{{ student.name }}</td>
+                                    <td>
+                                        {% if student.gender == 0 %}
+                                            Nam
+                                        {% else %}
+                                            Nữ
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ student.day_of_birth }}</td>
+                                    <td>{{ student.address }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+            </div>
+            <!-- End Card Body -->
+        </div>
+        <!--End Card -->
+
+    </div>
+{% endblock %}

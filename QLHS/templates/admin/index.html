@@ -7,9 +7,6 @@
         <img src="{{url_for('static', filename='images/bg-img.jpg')}}" class="img-fluid">
     </div>
     {% else %}
-        {% if err_msg %}
-            <h1>{{ err_msg }}</h1>
-        {% endif %}
         {% include 'admin/login.html' %}
     {% endif %}
 {% endblock %}
