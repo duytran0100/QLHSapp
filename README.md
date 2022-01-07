@@ -4,5 +4,10 @@
 <h5>Công nghệ sử dụng: Python, Flask, MySQL</h5>
 <h5>Danh sách các chức năng</h5>
 <ul>
-  <li>Quản lý học sinh</li>
+  <li>Quản lý học sinh (Thêm/Sửa/Xóa)</li>
+  <li>Phân công giáo viên</li>
+  <li>Nhập điểm</li>
+  <li>Phân lớp</li>
+  <li>Báo cáo thống kê điểm số</li>
+  <li>Tra cứu học sinh, giáo viên</li>
 </ul>
