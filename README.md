@@ -12,4 +12,13 @@
   <li>Tra cứu học sinh, giáo viên</li>
 </ul>
 <h5>Giao diện</h5>
-<h6>Trang chủ: </h6>
+<dl>
+<dt>Trang chủ:</dt>
+<dd>giúp bỗ sung vitamin cho cơ thể.</dd>
+
+<dt>Nước:</dt>
+<dd>giúp chúng ta tăng cường lượng nước cần cho cơ thể.</dd>
+
+<dt>Thịt:</dt>
+<dd>giúp cơ thể tăng cường đạm, và chất béo.</dd>
+</dl>
