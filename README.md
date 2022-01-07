@@ -12,7 +12,7 @@
   <li>Tra cứu học sinh, giáo viên</li>
 </ul>
 <h5>Thiết kế cơ sở dữ liệu</h5>
-<img src="https://user-images.githubusercontent.com/73629604/148506026-e0b13aa8-ec97-454a-b0dc-ad5b9979b1f8.png" alt="DatabaseImage"/>
+<img src="https://user-images.githubusercontent.com/73629604/148506026-e0b13aa8-ec97-454a-b0dc-ad5b9979b1f8.png" alt="DatabaseImage" width="250"/>
 <h5>Giao diện</h5>
 <dl>
 <dt>Trang chủ:</dt>
