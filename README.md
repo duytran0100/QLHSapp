@@ -11,6 +11,8 @@
   <li>Báo cáo thống kê điểm số</li>
   <li>Tra cứu học sinh, giáo viên</li>
 </ul>
+<h5>Thiết kế cơ sở dữ liệu</h5>
+
 <h5>Giao diện</h5>
 <dl>
 <dt>Trang chủ:</dt>
