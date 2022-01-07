@@ -11,3 +11,5 @@
   <li>Báo cáo thống kê điểm số</li>
   <li>Tra cứu học sinh, giáo viên</li>
 </ul>
+<h5>Giao diện</h5>
+<h6>Trang chủ: </h6>
